@@ -195,33 +195,37 @@ export default function ReviewFlow({ business }: { business: Business }) {
   const activeStar = hovered || rating;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-between px-4 py-8 bg-gradient-to-b from-slate-100 via-white to-slate-100">
+    <div className="min-h-[100dvh] flex flex-col items-center justify-between px-3 py-4 sm:px-4 sm:py-8 bg-gradient-to-b from-slate-100 via-white to-slate-100">
       <div className="w-full max-w-md my-auto">
-        <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-200/80 overflow-hidden">
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-200/70 border border-slate-200/80 overflow-hidden">
           {/* Top Brand Strip */}
           <div
-            className="px-6 pt-7 pb-6 text-white text-center"
+            className="px-4 pt-5 pb-4 sm:px-6 sm:pt-7 sm:pb-6 text-white text-center"
             style={{ backgroundColor: business.accentColor }}
           >
-            <div className="w-14 h-14 mx-auto mb-3 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-xl font-bold tracking-wide">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2.5 sm:mb-3 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-lg sm:text-xl font-bold tracking-wide">
               {initials}
             </div>
-            <p className="text-xs uppercase tracking-widest text-white/80 font-medium">
+            <p className="text-[11px] sm:text-xs uppercase tracking-widest text-white/80 font-medium">
               {business.category} • {business.city}
             </p>
-            <h1 className="text-2xl font-bold mt-1">{business.name}</h1>
-            <p className="text-sm text-white/90 mt-1">{business.tagline}</p>
+            <h1 className="text-xl sm:text-2xl font-bold mt-1 leading-snug">
+              {business.name}
+            </h1>
+            <p className="text-xs sm:text-sm text-white/90 mt-1 leading-relaxed">
+              {business.tagline}
+            </p>
           </div>
 
           {/* Body */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {/* Step 1: Star Rating */}
             {!privateSubmitted && (
               <div className="text-center">
                 <p className="text-sm font-semibold text-slate-700">
                   How was your experience today?
                 </p>
-                <div className="flex items-center justify-center gap-2 mt-4">
+                <div className="flex items-center justify-center gap-1 sm:gap-2 mt-3 sm:mt-4">
                   {[1, 2, 3, 4, 5].map((star) => {
                     const filled = star <= activeStar;
                     return (
@@ -236,10 +240,10 @@ export default function ReviewFlow({ business }: { business: Business }) {
                         onMouseEnter={() => setHovered(star)}
                         onMouseLeave={() => setHovered(0)}
                         aria-label={`Rate ${star} stars`}
-                        className="p-1.5 rounded-xl transition-transform active:scale-90 hover:scale-110 focus:outline-none"
+                        className="p-1.5 sm:p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl transition-transform active:scale-90 hover:scale-110 focus:outline-none touch-manipulation"
                       >
                         <Star
-                          className={`w-10 h-10 transition-colors ${filled
+                          className={`w-8 h-8 sm:w-10 sm:h-10 transition-colors ${filled
                               ? "fill-amber-400 text-amber-400"
                               : "text-slate-300"
                             }`}
@@ -248,7 +252,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                     );
                   })}
                 </div>
-                <div className="h-6 mt-2">
+                <div className="h-6 mt-1.5 sm:mt-2">
                   {activeStar > 0 && (
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700">
                       <span>{RATING_LABELS[activeStar].emoji}</span>
@@ -261,13 +265,13 @@ export default function ReviewFlow({ business }: { business: Business }) {
 
             {/* Step 2A: 4 or 5 Stars -> AI Quick Review Helper + Google Redirect */}
             {rating >= 4 && (
-              <div className="mt-5 pt-5 border-t border-slate-100 space-y-4 animate-fadeIn">
-                <div className="flex items-center justify-between">
+              <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-slate-100 space-y-3.5 sm:space-y-4 animate-fadeIn">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-teal-700">
-                    <Sparkles className="w-4 h-4" />
+                    <Sparkles className="w-4 h-4 shrink-0" />
                     <span>Quick AI Review Helper</span>
                   </div>
-                  <div className="flex gap-1 bg-slate-100 p-0.5 rounded-lg text-xs">
+                  <div className="grid grid-cols-3 sm:inline-flex gap-1 bg-slate-100 p-1 rounded-lg text-xs">
                     {(["short", "warm", "detailed"] as Tone[]).map((t) => (
                       <button
                         key={t}
@@ -276,7 +280,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                           setTone(t);
                           setIsEdited(false);
                         }}
-                        className={`px-2 py-1 rounded-md capitalize font-medium transition ${tone === t
+                        className={`px-2.5 py-1.5 sm:py-1 rounded-md capitalize font-medium transition touch-manipulation ${tone === t
                             ? "bg-white text-slate-900 shadow-sm"
                             : "text-slate-500 hover:text-slate-800"
                           }`}
@@ -291,7 +295,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                   <p className="text-xs text-slate-500 mb-2">
                     Tap what you liked (optional):
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {business.quickTags.map((tag) => {
                       const active = selectedTags.includes(tag);
                       return (
@@ -301,7 +305,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                           onClick={() =>
                             toggleTag(tag, selectedTags, setSelectedTags)
                           }
-                          className={`text-xs px-3 py-1.5 rounded-full border font-medium transition ${active
+                          className={`text-xs px-3 py-2 sm:py-1.5 rounded-full border font-medium transition touch-manipulation ${active
                               ? "bg-teal-700 text-white border-teal-700"
                               : "bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300"
                             }`}
@@ -338,14 +342,14 @@ export default function ReviewFlow({ business }: { business: Business }) {
                       setCustomReview(e.target.value);
                       setIsEdited(true);
                     }}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-800 focus:bg-white focus:border-teal-600 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-base sm:text-sm text-slate-800 focus:bg-white focus:border-teal-600 focus:outline-none"
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={handleCopyAndOpenGoogle}
-                  className="w-full py-3.5 px-4 rounded-xl font-semibold text-white shadow-lg shadow-teal-700/20 flex items-center justify-center gap-2 transition active:scale-[0.99]"
+                  className="w-full py-3.5 px-4 rounded-xl font-semibold text-sm sm:text-base text-white shadow-lg shadow-teal-700/20 flex items-center justify-center gap-2 transition active:scale-[0.99] touch-manipulation"
                   style={{ backgroundColor: business.accentColor }}
                 >
                   {copiedAndOpened ? (
@@ -404,7 +408,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                   <p className="text-xs text-slate-500 mb-2">
                     What went wrong?
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {business.issueTags.map((tag) => {
                       const active = issueTags.includes(tag);
                       return (
@@ -412,7 +416,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                           key={tag}
                           type="button"
                           onClick={() => toggleTag(tag, issueTags, setIssueTags)}
-                          className={`text-xs px-3 py-1.5 rounded-full border font-medium transition ${active
+                          className={`text-xs px-3 py-2 sm:py-1.5 rounded-full border font-medium transition touch-manipulation ${active
                               ? "bg-slate-900 text-white border-slate-900"
                               : "bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300"
                             }`}
@@ -430,24 +434,24 @@ export default function ReviewFlow({ business }: { business: Business }) {
                     value={privateMessage}
                     onChange={(e) => setPrivateMessage(e.target.value)}
                     placeholder="Share what happened so we can make it right..."
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-800 focus:bg-white focus:border-slate-900 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-base sm:text-sm text-slate-800 focus:bg-white focus:border-slate-900 focus:outline-none"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <input
                     type="text"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder="Your name (optional)"
-                    className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:bg-white focus:border-slate-900 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-base sm:text-sm focus:bg-white focus:border-slate-900 focus:outline-none"
                   />
                   <input
                     type="tel"
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
                     placeholder="Phone / WhatsApp"
-                    className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:bg-white focus:border-slate-900 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-base sm:text-sm focus:bg-white focus:border-slate-900 focus:outline-none"
                   />
                 </div>
 
@@ -458,7 +462,7 @@ export default function ReviewFlow({ business }: { business: Business }) {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3.5 px-4 rounded-xl font-semibold text-white bg-slate-900 hover:bg-slate-800 disabled:opacity-60 flex items-center justify-center gap-2 transition"
+                  className="w-full py-3.5 px-4 rounded-xl font-semibold text-sm sm:text-base text-white bg-slate-900 hover:bg-slate-800 disabled:opacity-60 flex items-center justify-center gap-2 transition touch-manipulation"
                 >
                   <Send className="w-4 h-4" />
                   <span>
