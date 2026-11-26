@@ -1,0 +1,148 @@
+{
+  "businesses": [
+    {
+      "slug": "larkspire",
+      "name": "Larkspire",
+      "category": "Digital Agency",
+      "city": "Jaipur",
+      "tagline": "Next.js Websites, Shopify Stores, SEO & Performance Marketing.",
+      "accentColor": "#0f766e",
+      "googleReviewUrl": "https://g.page/r/Cde6fduAqdZREAI/review",
+      "ownerWhatsapp": "",
+      "quickTags": [
+        "Fast Next.js website",
+        "Great design & UX",
+        "SEO & lead results",
+        "Responsive team",
+        "On-time delivery",
+        "Clear communication"
+      ],
+      "issueTags": [
+        "Delivery timeline",
+        "Communication",
+        "Design revisions",
+        "Pricing",
+        "Support response"
+      ],
+      "totalScans": 12,
+      "positiveClicks": 6,
+      "privateFeedbackCount": 2
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "fb-1795671436173-158",
+      "businessSlug": "larkspire",
+      "rating": 5,
+      "type": "google_redirect",
+      "selectedTags": [
+        "SEO & lead results"
+      ],
+      "reviewText": "Had a great experience at Larkspire! Loved the seo & lead results. Definitely coming back.",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T05:37:16.173Z"
+    },
+    {
+      "id": "fb-1795671408067-647",
+      "businessSlug": "larkspire",
+      "rating": 5,
+      "type": "google_redirect",
+      "selectedTags": [
+        "Responsive team"
+      ],
+      "reviewText": "Had a great experience at Larkspire! Loved the responsive team. Definitely coming back.",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T05:36:48.067Z"
+    },
+    {
+      "id": "fb-1795671363677-976",
+      "businessSlug": "larkspire",
+      "rating": 5,
+      "type": "google_redirect",
+      "selectedTags": [
+        "Responsive team",
+        "On-time delivery"
+      ],
+      "reviewText": "Had a great experience at Larkspire! Loved the responsive team and on-time delivery. Definitely coming back.",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T05:36:03.677Z"
+    },
+    {
+      "id": "fb-1795671297612-403",
+      "businessSlug": "larkspire",
+      "rating": 1,
+      "type": "private_feedback",
+      "selectedTags": [
+        "Support response"
+      ],
+      "reviewText": "Selected issues: Support response",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "pending",
+      "createdAt": "2026-11-26T05:34:57.612Z"
+    },
+    {
+      "id": "fb-1795670970148-764",
+      "businessSlug": "larkspire",
+      "rating": 1,
+      "type": "private_feedback",
+      "selectedTags": [
+        "Delivery timeline",
+        "Support response"
+      ],
+      "reviewText": "Selected issues: Delivery timeline, Support response",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T05:29:30.149Z"
+    },
+    {
+      "id": "fb-1795667445901-484",
+      "businessSlug": "larkspire",
+      "rating": 5,
+      "type": "google_redirect",
+      "selectedTags": [
+        "Great design & UX"
+      ],
+      "reviewText": "Had a great experience at Larkspire! Loved the great design & ux. Definitely coming back.",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T04:30:45.901Z"
+    },
+    {
+      "id": "fb-1795667251200-671",
+      "businessSlug": "larkspire",
+      "rating": 5,
+      "type": "google_redirect",
+      "selectedTags": [
+        "On-time delivery"
+      ],
+      "reviewText": "Had a great experience at Larkspire! Loved the on-time delivery. Definitely coming back.",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T04:27:31.200Z"
+    },
+    {
+      "id": "fb-1795667236495-415",
+      "businessSlug": "larkspire",
+      "rating": 5,
+      "type": "google_redirect",
+      "selectedTags": [
+        "On-time delivery"
+      ],
+      "reviewText": "Had a great experience at Larkspire! Loved the on-time delivery. Definitely coming back.",
+      "customerName": "Anonymous",
+      "customerPhone": "",
+      "status": "resolved",
+      "createdAt": "2026-11-26T04:27:16.495Z"
+    }
+  ]
+}
