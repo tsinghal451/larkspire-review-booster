@@ -20,9 +20,13 @@ import type { Business, FeedbackEntry, StoreData } from "@/lib/db";
 import { CATEGORY_PRESETS, getPresetByCategory } from "@/lib/presets";
 
 export default function HomeConsole({ initialData }: { initialData: StoreData }) {
-  const [data, setData] = useState<StoreData>(initialData);
+  const safeInitial: StoreData = {
+    businesses: Array.isArray(initialData?.businesses) ? initialData.businesses : [],
+    feedbacks: Array.isArray(initialData?.feedbacks) ? initialData.feedbacks : [],
+  };
+  const [data, setData] = useState<StoreData>(safeInitial);
   const [selectedSlug, setSelectedSlug] = useState<string>(
-    initialData.businesses[0]?.slug || ""
+    safeInitial.businesses[0]?.slug || ""
   );
   const [qrDataUrl, setQrDataUrl] = useState<string>("");
   const [origin, setOrigin] = useState<string>("");

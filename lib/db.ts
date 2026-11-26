@@ -205,9 +205,24 @@ export async function readStore(): Promise<StoreData> {
         cache: "no-store",
       });
       if (res.ok) {
-        const payload = (await res.json()) as { result: string | null };
+        const payload = (await res.json()) as { result: unknown };
         if (payload.result) {
-          return JSON.parse(payload.result) as StoreData;
+          let parsed: unknown =
+            typeof payload.result === "string"
+              ? JSON.parse(payload.result)
+              : payload.result;
+          // Handle any previously double-encoded string in Redis
+          if (typeof parsed === "string") {
+            parsed = JSON.parse(parsed);
+          }
+          const candidate = parsed as Partial<StoreData>;
+          if (
+            candidate &&
+            Array.isArray(candidate.businesses) &&
+            Array.isArray(candidate.feedbacks)
+          ) {
+            return candidate as StoreData;
+          }
         }
         await writeStore(DEFAULT_STORE);
         return structuredClone(DEFAULT_STORE);
@@ -236,9 +251,9 @@ export async function writeStore(data: StoreData): Promise<void> {
       method: "POST",
       headers: {
         Authorization: `Bearer ${redis.token}`,
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain",
       },
-      body: JSON.stringify(JSON.stringify(data)),
+      body: JSON.stringify(data),
     });
     if (res.ok) return;
   }
